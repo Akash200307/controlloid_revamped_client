@@ -25,7 +25,7 @@ The server application can be downloaded from the following link.
 * More to come! (suggestions welcome on GitHub)
 
 ## Screenshots
-![Screenshot 0](fastlane/metadata/android/en-US/images/phoneScreenshots/0.png)
+![Screenshot 0](fastlane/metadata/android/en-US/images/phoneScreenshots/0.jpg)
 ![Screenshot 1](fastlane/metadata/android/en-US/images/phoneScreenshots/1.png)
 ![Screenshot 2](fastlane/metadata/android/en-US/images/phoneScreenshots/2.png)
 ![Screenshot 3](fastlane/metadata/android/en-US/images/phoneScreenshots/3.png)
