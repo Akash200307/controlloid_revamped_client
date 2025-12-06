@@ -1,7 +1,5 @@
 
 
-<img alt="F-Droid" src="https://img.shields.io/f-droid/v/com.controlloid?label=f-droid&style=flat"> <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/experiment322/controlloid-client?label=source&style=flat"> <img alt="GitHub commits since tagged version" src="https://img.shields.io/github/commits-since/experiment322/controlloid-client/latest">
-
 # controlloid-client
 Controlloid is a small open source application that turns your phone into a
 real game controller for your PC. It works on Linux and Windows and can
@@ -13,7 +11,7 @@ the internet.
 
 The server application can be downloaded from the following link.
 
-[controlloid-server](https://github.com/experiment322/controlloid-server)
+[controlloid-server](https://github.com/Akash200307/controlloid_revamped_server)
 
 ## Features
 * All the buttons of a PS2 controller
