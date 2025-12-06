@@ -75,10 +75,23 @@ export default class TouchDispenser extends React.PureComponent {
     _.forEach(currTouches, (touch, touchId) => {
       const touchedChildren = this.getChildrenUnderTouch(touch.locationX, touch.locationY);
       const registeredChildren = this.touchRegisteredChildren[touchId];
+
+      // Check if this touch is currently owned by an Analog component
+      const isOwnedByAnalog = registeredChildren.some((childIndex) => {
+        const child = this.childRefs[childIndex].current;
+        return child && child.constructor.name === "Analog";
+      });
+
       _.forEach(_.union(touchedChildren, registeredChildren), (childIndex) => {
         const child = this.childRefs[childIndex].current;
         const index = registeredChildren.indexOf(childIndex);
         const isRegistered = index !== -1;
+
+        // Don't allow non-analog components to steal touches from analog sticks
+        if (!isRegistered && isOwnedByAnalog && child.constructor.name !== "Analog") {
+          return; // Skip this component
+        }
+
         if (child.isTouchReceiver && child.onTouchMove(touch)) {
           if (!isRegistered) registeredChildren.push(childIndex);
         } else if (isRegistered) registeredChildren.splice(index, 1);

@@ -36,6 +36,7 @@ export default class Button extends TouchReceiverMixin(React.PureComponent) {
   onTouchMove(touch) {
     if (this.touchId === touch.identifier) {
       const { x, y, size } = this.props;
+      // Release the button if finger moves outside its bounds
       if (
         x > touch.locationX ||
         touch.locationX > x + size ||
@@ -46,11 +47,16 @@ export default class Button extends TouchReceiverMixin(React.PureComponent) {
         this.buttonRelease();
         return false;
       }
-    } else if (this.touchId === null) {
+      return true;
+    }
+    // Allow claiming touches for swipe combos, but TouchDispenser will
+    // only call this if the touch is available (not owned by another component)
+    if (this.touchId === null) {
       this.touchId = touch.identifier;
       this.buttonPress();
+      return true;
     }
-    return true;
+    return false;
   }
 
   onTouchUp(id) {

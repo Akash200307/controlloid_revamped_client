@@ -89,6 +89,8 @@ export default class Analog extends TouchReceiverMixin(React.PureComponent) {
         x: touch.locationX,
         y: touch.locationY,
       });
+      // Always return true to consume the touch event and prevent it from
+      // triggering other buttons, even if the finger moves outside bounds
       return true;
     }
     return false;

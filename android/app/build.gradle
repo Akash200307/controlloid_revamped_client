@@ -173,6 +173,12 @@ android {
                 output.versionCodeOverride =
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
+            
+            // Set APK name for release builds
+            if (variant.buildType.name == 'release') {
+                def project = project
+                output.outputFileName = "controlloid_revamped.apk"
+            }
         }
     }
 }
