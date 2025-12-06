@@ -19,7 +19,7 @@ const HomeStackNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: ({ navigation: { toggleDrawer } }) => ({
-      header: <NavigatorStackHeader onAction={toggleDrawer} title="Controlloid" />,
+      header: <NavigatorStackHeader onAction={toggleDrawer} title="Controlloid Revamped" />,
     }),
   },
 });

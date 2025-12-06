@@ -1,7 +1,6 @@
 import React from "react";
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { SvgXml } from "react-native-svg";
-import { Animated, View } from "react-native";
+import { Animated, View, Image } from "react-native";
 import * as Types from "../../types";
 import { TouchReceiverMixin } from "../utils";
 import Styles, { buildContainerStyle } from "./styles";
@@ -62,13 +61,23 @@ export default class Button extends TouchReceiverMixin(React.PureComponent) {
   }
 
   render() {
-    const { x, y, size, theme, stickerIcon, style, ...viewProps } = this.props;
+    const { x, y, size, theme, stickerIcon, emit, style, ...viewProps } = this.props;
+    // Use rectangular shape for shoulder buttons (L1, L2, R1, R2, L3, R3)
+    const isShoulderButton = emit && ["L1", "L2", "R1", "R2", "L3", "R3"].includes(emit);
+    const buttonShape = isShoulderButton ? theme.rect : theme.knob;
+
     return (
       <Animated.View {...viewProps} style={[buildContainerStyle(x, y, size), style]}>
         <Animated.View style={{ opacity: this.opacity }}>
-          <SvgXml xml={theme.knob} width={size} height={size} />
+          <SvgXml xml={buttonShape} width={size} height={size} />
           <View style={Styles.overlayContainer}>
-            <MaterialIcon name={stickerIcon} size={size * 0.5} />
+            {stickerIcon && (
+              <Image
+                source={stickerIcon}
+                style={{ width: size * 0.5, height: size * 0.5 }}
+                resizeMode="contain"
+              />
+            )}
           </View>
         </Animated.View>
       </Animated.View>
@@ -84,10 +93,10 @@ Button.propTypes = {
   theme: Types.controllerTheme.isRequired,
   style: Types.any,
   dispatch: Types.func,
-  stickerIcon: Types.string,
+  stickerIcon: Types.any, // Image source
 };
 
 Button.defaultProps = {
   dispatch: () => null,
-  stickerIcon: "star-three-points",
+  stickerIcon: null,
 };

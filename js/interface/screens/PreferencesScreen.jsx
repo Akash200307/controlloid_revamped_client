@@ -1,8 +1,8 @@
 import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Surface } from "react-native-paper";
-import { Alert, ScrollView } from "react-native";
+import { Button } from "react-native-paper";
+import { Alert, ScrollView, View } from "react-native";
 import Styles from "../styles";
 import * as Types from "../../types";
 import * as ApplicationThemes from "../themes";
@@ -61,8 +61,8 @@ class PreferencesScreen extends React.Component {
     } = this.props;
     const { preferencesKey } = this.state;
     return (
-      <Surface style={Styles.screen}>
-        <ScrollView key={preferencesKey} overScrollMode="never">
+      <View style={{ flex: 1, backgroundColor: "#0F172A" }}>
+        <ScrollView key={preferencesKey} overScrollMode="never" style={{ flex: 1, padding: 16 }}>
           <PreferencePickCard
             name="Application theme"
             helperText="Change application appearance"
@@ -92,15 +92,18 @@ class PreferencesScreen extends React.Component {
             onSubmit={(value) => saveSocketMinLatency(Number(value))}
           />
         </ScrollView>
-        <Button
-          mode="outlined"
-          color="crimson"
-          style={Styles.elevate}
-          onPress={this.confirmResetPreferences}
-        >
-          RESET
-        </Button>
-      </Surface>
+        <View style={{ padding: 16 }}>
+          <Button
+            mode="contained"
+            color="#EF4444"
+            style={[Styles.modernButton, { backgroundColor: "#EF4444" }]}
+            labelStyle={Styles.modernButtonText}
+            onPress={this.confirmResetPreferences}
+          >
+            RESET TO DEFAULTS
+          </Button>
+        </View>
+      </View>
     );
   }
 }

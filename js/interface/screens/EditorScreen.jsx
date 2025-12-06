@@ -6,7 +6,7 @@ import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { connect } from "react-redux";
 import { State, TapGestureHandler } from "react-native-gesture-handler";
 import { List, Modal, Portal, Surface } from "react-native-paper";
-import { Dimensions, ScrollView, StatusBar, View } from "react-native";
+import { Dimensions, ScrollView, StatusBar, View, Image } from "react-native";
 import Styles from "../styles";
 import * as Types from "../../types";
 import { Components } from "../../lib/controller";
@@ -118,7 +118,20 @@ class EditorScreen extends React.Component {
       <List.Item
         key={component.name}
         title={component.name}
-        left={(props) => <MaterialIcon {...props} size={48} name={component.props.stickerIcon} />}
+        left={(props) =>
+          component.props.stickerIcon ? (
+            <View
+              {...props}
+              style={{ justifyContent: "center", alignItems: "center", width: 48, height: 48 }}
+            >
+              <Image
+                source={component.props.stickerIcon}
+                style={{ width: 40, height: 40 }}
+                resizeMode="contain"
+              />
+            </View>
+          ) : null
+        }
         onPress={() => this.addComponent(component)}
       />
     ));
@@ -135,6 +148,7 @@ class EditorScreen extends React.Component {
             </View>
           </TapGestureHandler>
           {layout &&
+            layout.components &&
             layout.components.map((component) => (
               <ComponentEditorBox
                 key={component.id}

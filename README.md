@@ -16,7 +16,7 @@ The server application can be downloaded from the following link.
 [controlloid-server](https://github.com/experiment322/controlloid-server)
 
 ## Features
-* All the buttons of a PS2 controller (except L3 and R3)
+* All the buttons of a PS2 controller
 * Supports multiple clients (limited to 16 on Windows)
 * Analog stick dead zone (set from Preferences)
 * Scan and connect instantly to LAN servers

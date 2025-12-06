@@ -5,7 +5,8 @@ export default [
     props: {
       emitX: "ANALOG_LX",
       emitY: "ANALOG_LY",
-      stickerIcon: "alpha-l-box",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/PS3-Left_Stick.png"),
     },
   },
   {
@@ -14,7 +15,8 @@ export default [
     props: {
       emitX: "ANALOG_RX",
       emitY: "ANALOG_RY",
-      stickerIcon: "alpha-r-box",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/PS3-Right_Stick.png"),
     },
   },
   {
@@ -22,7 +24,8 @@ export default [
     type: "Button",
     props: {
       emit: "L1",
-      stickerIcon: "chevron-left",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/L1.png"),
     },
   },
   {
@@ -30,7 +33,8 @@ export default [
     type: "Button",
     props: {
       emit: "L2",
-      stickerIcon: "chevron-double-left",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/L2.png"),
     },
   },
   {
@@ -38,7 +42,8 @@ export default [
     type: "Button",
     props: {
       emit: "R1",
-      stickerIcon: "chevron-right",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/R1.png"),
     },
   },
   {
@@ -46,7 +51,26 @@ export default [
     type: "Button",
     props: {
       emit: "R2",
-      stickerIcon: "chevron-double-right",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/R2.png"),
+    },
+  },
+  {
+    name: "L3",
+    type: "Button",
+    props: {
+      emit: "L3",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/L3.png"),
+    },
+  },
+  {
+    name: "R3",
+    type: "Button",
+    props: {
+      emit: "R3",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/R3.png"),
     },
   },
   {
@@ -54,7 +78,8 @@ export default [
     type: "Button",
     props: {
       emit: "TRIANGLE",
-      stickerIcon: "triangle-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/triangle.png"),
     },
   },
   {
@@ -62,7 +87,8 @@ export default [
     type: "Button",
     props: {
       emit: "CROSS",
-      stickerIcon: "close-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/cross.png"),
     },
   },
   {
@@ -70,7 +96,8 @@ export default [
     type: "Button",
     props: {
       emit: "SQUARE",
-      stickerIcon: "square-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/square.png"),
     },
   },
   {
@@ -78,7 +105,8 @@ export default [
     type: "Button",
     props: {
       emit: "CIRCLE",
-      stickerIcon: "circle-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/circle.png"),
     },
   },
   {
@@ -86,7 +114,8 @@ export default [
     type: "Button",
     props: {
       emit: "UP",
-      stickerIcon: "arrow-up-bold-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/up.png"),
     },
   },
   {
@@ -94,7 +123,8 @@ export default [
     type: "Button",
     props: {
       emit: "DOWN",
-      stickerIcon: "arrow-down-bold-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/down.png"),
     },
   },
   {
@@ -102,7 +132,8 @@ export default [
     type: "Button",
     props: {
       emit: "LEFT",
-      stickerIcon: "arrow-left-bold-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/left.png"),
     },
   },
   {
@@ -110,7 +141,8 @@ export default [
     type: "Button",
     props: {
       emit: "RIGHT",
-      stickerIcon: "arrow-right-bold-outline",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/right.png"),
     },
   },
   {
@@ -118,7 +150,8 @@ export default [
     type: "Button",
     props: {
       emit: "SELECT",
-      stickerIcon: "minus",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/select.png"),
     },
   },
   {
@@ -126,7 +159,24 @@ export default [
     type: "Button",
     props: {
       emit: "START",
-      stickerIcon: "play",
+      // eslint-disable-next-line global-require
+      stickerIcon: require("../../../assets/icons/ps2_icons/start.png"),
+    },
+  },
+  {
+    name: "M1",
+    type: "MacroButton",
+    props: {
+      emits: ["L2", "R2"],
+      macroLabel: "M1",
+    },
+  },
+  {
+    name: "M2",
+    type: "MacroButton",
+    props: {
+      emits: ["L1", "L2"],
+      macroLabel: "M2",
     },
   },
 ];

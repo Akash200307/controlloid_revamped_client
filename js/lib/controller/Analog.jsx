@@ -1,7 +1,6 @@
 import React from "react";
-import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { SvgXml } from "react-native-svg";
-import { Animated, View } from "react-native";
+import { Animated, View, Image } from "react-native";
 import * as Types from "../../types";
 import { TouchReceiverMixin } from "../utils";
 import Styles, { buildContainerStyle } from "./styles";
@@ -107,13 +106,20 @@ export default class Analog extends TouchReceiverMixin(React.PureComponent) {
     const knobSize = size * 0.75;
     return (
       <Animated.View {...viewProps} style={[buildContainerStyle(x, y, size), style]}>
+        {/* Fixed outer circle - doesn't move */}
         <View style={Styles.overlayContainer}>
-          <SvgXml xml={theme.pad} width={size} height={size} />
-        </View>
-        <Animated.View style={{ transform: this.translation.getTranslateTransform() }}>
           <SvgXml xml={theme.knob} width={knobSize} height={knobSize} />
+        </View>
+        {/* Moving inner icon - follows analog movement */}
+        <Animated.View style={{ transform: this.translation.getTranslateTransform() }}>
           <View style={Styles.overlayContainer}>
-            <MaterialIcon name={stickerIcon} size={knobSize * 0.5} />
+            {stickerIcon && (
+              <Image
+                source={stickerIcon}
+                style={{ width: knobSize * 0.5, height: knobSize * 0.5 }}
+                resizeMode="contain"
+              />
+            )}
           </View>
         </Animated.View>
       </Animated.View>
@@ -130,14 +136,14 @@ Analog.propTypes = {
   theme: Types.controllerTheme.isRequired,
   style: Types.any,
   dispatch: Types.func,
-  stickerIcon: Types.string,
+  stickerIcon: Types.any, // Image source
   analogDeadZone: Types.number,
   analogStickMax: Types.number,
 };
 
 Analog.defaultProps = {
   dispatch: () => null,
-  stickerIcon: "star-three-points",
+  stickerIcon: null,
   analogDeadZone: 33,
   analogStickMax: 32767,
 };
