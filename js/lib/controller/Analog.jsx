@@ -26,6 +26,8 @@ export default class Analog extends TouchReceiverMixin(React.PureComponent) {
     };
     this.touchId = null;
     this.translation = new Animated.ValueXY();
+    // Mark this as an analog stick for touch handling
+    this.isAnalogStick = true;
   }
 
   analogMove(position) {

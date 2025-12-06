@@ -79,7 +79,7 @@ export default class TouchDispenser extends React.PureComponent {
       // Check if this touch is currently owned by an Analog component
       const isOwnedByAnalog = registeredChildren.some((childIndex) => {
         const child = this.childRefs[childIndex].current;
-        return child && child.constructor.name === "Analog";
+        return child && child.isAnalogStick === true;
       });
 
       _.forEach(_.union(touchedChildren, registeredChildren), (childIndex) => {
@@ -88,7 +88,7 @@ export default class TouchDispenser extends React.PureComponent {
         const isRegistered = index !== -1;
 
         // Don't allow non-analog components to steal touches from analog sticks
-        if (!isRegistered && isOwnedByAnalog && child.constructor.name !== "Analog") {
+        if (!isRegistered && isOwnedByAnalog && child.isAnalogStick !== true) {
           return; // Skip this component
         }
 
